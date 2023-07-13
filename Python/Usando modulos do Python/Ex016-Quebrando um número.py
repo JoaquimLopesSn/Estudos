@@ -1,6 +1,7 @@
-import math
+from math import trunc
+
 numero = float(input("Digite um numero real: "))
 
-numarre = round (Numero)
+numarre = trunc (Numero)
 
 print ("o valor digitado foi {} e sua porção inteira é {}".format(numero, numarre))
