@@ -1,6 +1,6 @@
 import math
-Numero = float(input("Digite um numero que não seja inteiro: "))
+numero = float(input("Digite um numero real: "))
 
 numarre = round (Numero)
 
-print (numarre)
+print ("o valor digitado foi {} e sua porção inteira é {}".format(numero, numarre))
