@@ -1,5 +1,8 @@
 body{
     background-color: #13293D; 
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 body h1 {
     
@@ -8,6 +11,57 @@ body h1 {
     background-color: #3072af; 
     padding-top: 20px;
     padding-bottom: 20px;
-    border-radius: 5px;
-    margin-top: 0%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0%;
 }
+.container {
+    display: grid;
+    margin: 10px;
+    height: 780px;
+    border-radius: 10px;
+    grid-template-columns: 1000px 290px;
+    grid-template-rows: 175px 175px 175px 175px 160px; 
+
+  }
+
+  .box1 {
+    background-color: #3072af;
+    border-radius: 10px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5;
+
+  }
+  .box2{
+    background-color: #3072af;
+    border-radius: 10px;
+    margin-left: 10px;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  .boxfinal {
+    background-color: #3072af;
+    border-radius: 10px;
+    margin-top: 10px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 5;
+  }
+
+  .box2 button {
+    border-radius: 5px;
+    padding: 20px 30px;
+    background-color: #103d68;
+    color:#E8F1F2;
+    border-color: #E8F1F2;
+  }
