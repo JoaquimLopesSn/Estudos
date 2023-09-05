@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Carros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile {
+            display: none;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .services {
+            display: none;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .service-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .service-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Carros</h2>
+        <input type="text" id="search" class="search-input" placeholder="Pesquisar por modelo, marca, cliente, placa, etc.">
+        <table id="carTable">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Ano</th>
+                    <th>Placa</th>
+                    <th>Kilometragem</th>
+                    <th>Nome do Cliente</th>
+                    <th>Endereço do Cliente</th>
+                    <th>Telefone do Cliente</th>
+                    <th>E-mail do Cliente</th>
+                    <th>Data do Cadastro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemplo de uma linha da tabela -->
+                <tr>
+                    <td><a href="#" class="show-profile">Carro1</a></td>
+                    <td>Marca1</td>
+                    <td>2022</td>
+                    <td>ABC123</td>
+                    <td>10000</td>
+                    <td>Cliente1</td>
+                    <td>Endereço1</td>
+                    <td>123-456-789</td>
+                    <td>cliente1@example.com</td>
+                    <td>2023-09-01</td>
+                </tr>
+                <a href="javascript:history.back()" class="btn">Voltar</a>
+                <!-- Adicione mais linhas com dados dinâmicos conforme necessário -->
+            </tbody>
+        </table>
+        <div class="profile" id="carProfile">
+            <h3>Perfil do Carro</h3>
+            <p><strong>Modelo:</strong> <span id="profileModel"></span></p>
+            <p><strong>Marca:</strong> <span id="profileMarca"></span></p>
+            <p><strong>Ano:</strong> <span id="profileAno"></span></p>
+            <p><strong>Placa:</strong> <span id="profilePlaca"></span></p>
+            <p><strong>Nome do Cliente:</strong> <span id="profileNomeCliente"></span></p>
+            <p><strong>Endereço do Cliente:</strong> <span id="profileEnderecoCliente"></span></p>
+            <p><strong>Telefone do Cliente:</strong> <span id="profileTelefoneCliente"></span></p>
+            <p><strong>E-mail do Cliente:</strong> <span id="profileEmailCliente"></span></p>
+            <p><strong>Data do Cadastro:</strong> <span id="profileDataCadastro"></span></p>
+            <button id="newServiceBtn">Gerar Nova Ordem de Serviço</button>
+            <div class="services" id="serviceList">
+                <h4>Serviços Realizados</h4>
+                <ul class="service-list">
+                    <!-- Preencha a lista de serviços realizados dinamicamente aqui -->
+                    <li>Serviço 1</li>
+                    <li>Serviço 2</li>
+                    <!-- Adicione mais serviços conforme necessário -->
+                    
+<button id="goBackBtn" style="display: none;">Voltar para a Lista</button> <!-- Botão de Voltar -->
+
+<div class="services" id="serviceList">
+    <h4>Serviços Realizados</h4>
+    <ul class="service-list">
+        <!-- Preencha a lista de serviços realizados dinamicamente aqui -->
+        <li>Serviço 1</li>
+        <li>Serviço 2</li>
+        <!-- Adicione mais serviços conforme necessário -->
+    </ul>
+</div>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Código JavaScript para preencher a tabela e interações de perfil
+        document.addEventListener("DOMContentLoaded", function() {
+            var carRows = document.querySelectorAll("#carTable tbody tr");
+            var carProfile = document.querySelector("#carProfile");
+            var profileModel = document.querySelector("#profileModel");
+            var profileMarca = document.querySelector("#profileMarca");
+            var profileAno = document.querySelector("#profileAno");
+            var profilePlaca = document.querySelector("#profilePlaca");
+            var profileNomeCliente = document.querySelector("#profileNomeCliente");
+            var profileEnderecoCliente = document.querySelector("#profileEnderecoCliente");
+            var profileTelefoneCliente = document.querySelector("#profileTelefoneCliente");
+            var profileEmailCliente = document.querySelector("#profileEmailCliente");
+            var profileDataCadastro = document.querySelector("#profileDataCadastro");
+            var serviceList = document.querySelector("#serviceList");
+            var newServiceBtn = document.querySelector("#newServiceBtn");
+            var goBackBtn = document.querySelector("#goBackBtn"); // Botão de Voltar
+    
+            carRows.forEach(function(row) {
+                row.querySelector(".show-profile").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    var rowData = row.querySelectorAll("td");
+                    profileModel.textContent = rowData[0].textContent;
+                    profileMarca.textContent = rowData[1].textContent;
+                    profileAno.textContent = rowData[2].textContent;
+                    profilePlaca.textContent = rowData[3].textContent;
+                    profileNomeCliente.textContent = rowData[5].textContent;
+                    profileEnderecoCliente.textContent = rowData[6].textContent;
+                    profileTelefoneCliente.textContent = rowData[7].textContent;
+                    profileEmailCliente.textContent = rowData[8].textContent;
+                    profileDataCadastro.textContent = rowData[9].textContent;
+                    serviceList.style.display = "block";
+                    carProfile.style.display = "block";
+                    newServiceBtn.style.display = "block";
+                    goBackBtn.style.display = "block"; // Exibir o botão de Voltar
+                });
+            });
+    
+            newServiceBtn.addEventListener("click", function() {
+                // Implemente a lógica para gerar uma nova ordem de serviço aqui
+                alert("Nova ordem de serviço gerada!");
+            });
+    
+            goBackBtn.addEventListener("click", function() {
+                // Ocultar o perfil do carro e o botão de Voltar e reexibir a lista de carros
+                serviceList.style.display = "none";
+                carProfile.style.display = "none";
+                newServiceBtn.style.display = "none";
+                goBackBtn.style.display = "none";
+            });
+        });
+    </script>
+    
