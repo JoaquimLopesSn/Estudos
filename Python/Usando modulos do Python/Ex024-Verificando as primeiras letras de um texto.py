@@ -1,6 +1,5 @@
-cid = input('Em qual cidade voçe nasceu? ').strip()
+cid = input('Em qual cidade voçe nasceu? ').strip().upper()
 
-cid = cid.title()
-print('Essa frase contem a palavra Santos "{}"'.format('Santo' in cid))
+print('no inicio da frase contem a palavra Santos "{}"'.format(cid[:5] == 'SANTO'))
 
 
