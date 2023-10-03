@@ -2,7 +2,7 @@ sal = float(input('Digite o valor do salario que vc recebe agora: '))
 
 
 if sal <= 1250: 
-    salnovo = ((sal * 15) / 100) + sal
+    salnovo = ((sal * 15) / 100) + sal #formula de porcentagem 
 else:
     salnovo = ((sal * 10) / 100) + sal
 
