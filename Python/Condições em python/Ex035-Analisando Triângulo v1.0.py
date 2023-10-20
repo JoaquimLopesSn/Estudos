@@ -13,4 +13,4 @@ if (l1 + l2) > l3 and (l1 + l3) > l2 and (l2 + l3) > l1:
 else:
     print('O segmentos NÃO PODEM FORMAR um triângulo.')
 print('-='*20)
-1
+
