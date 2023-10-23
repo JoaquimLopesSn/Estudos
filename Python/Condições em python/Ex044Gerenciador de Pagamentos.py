@@ -22,3 +22,5 @@ elif op == 4:
     parcelas = int(input('Quantas parcelas? '))
     valorop = valor + ((valor * 20) / 100)
     print('Sua compra de R${:.2f} vai gerar {}x parcelas de R${:.2f}'.format(valor, parcelas, (valorop / parcelas)))
+else:
+    print('Essa opção não e valida!')
